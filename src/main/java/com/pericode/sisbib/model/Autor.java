@@ -3,24 +3,29 @@ package com.pericode.sisbib.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Autor {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer idautor;
     private String nombre;
     private String ape_pat;
     private String ape_mat;
-    private String pais;
+    
+    @ManyToOne
+    @JoinColumn(name = "idpais")
+    private Pais idpais;    
 
     public Integer getId() {
-        return id;
+        return idautor;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer idautor) {
+        this.idautor = idautor;
     }
 
     public String getNombre() {
@@ -47,11 +52,13 @@ public class Autor {
         this.ape_mat = ape_mat;
     }
 
-    public String getPais() {
-        return pais;
+    public Pais getIdpais() {
+        return idpais;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setIdpais(Pais idpais) {
+        this.idpais = idpais;
     }
+
+    
 }
